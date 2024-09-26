@@ -27,7 +27,7 @@ public class ChiTietHoaDon {
     private int soLuong;
 
     @Column(name = "gia")
-    private double gia;
+    private float gia;
 
     @Column(name = "tongTien")
     private float tongTien;

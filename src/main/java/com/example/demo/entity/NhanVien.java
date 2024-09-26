@@ -43,7 +43,7 @@ public class NhanVien {
     private String soDienThoai;
     
     @Column(name = "vaiTro")
-    private String vaiTro;  
+    private VaiTro vaiTro;  
 
     @Column(name = "ngaySinh")
     private LocalDate ngaySinh;

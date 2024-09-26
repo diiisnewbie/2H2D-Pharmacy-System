@@ -67,7 +67,7 @@ public class Thuoc {
     private String nhaCungCap;
 
     @Column(name = "giaThuoc")
-    private double giaThuoc;
+    private float giaThuoc;
 
     @ManyToOne
     @JoinColumn(name="maViTRi")

@@ -6,8 +6,6 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -26,11 +24,12 @@ import java.util.List;
 @Table(name = "chietkhau")
 public class ChietKhau {
     @Id
-    @Column(name = "maChietKhau")
-    private String maChietKhau;
+    @Column(name = "maGiamGia")
+    private String maGiamGia;
 
     @Column(name = "soLuong")
     private int soLuong;
+
     @Column(name = "giaTriChietKhau")
     private float giaTriChietKhau;
 
@@ -40,9 +39,11 @@ public class ChietKhau {
     @Column(name = "ngayKetThucApDung")
     private LocalDate ngayKetThucApDung;
 
-    @ManyToOne
-    @JoinColumn(name = "maNhanVien")
-    private NhanVien nhanVien;
+    @Column(name = "trangThaiChietKhau")
+    private boolean trangThaiChietKhau;
+
+    @Column(name = "moTa")
+    private String moTa;
 
     @OneToMany(mappedBy = "chietKhau",cascade = CascadeType.ALL)
     private List<HoaDon> dsHoaDon;

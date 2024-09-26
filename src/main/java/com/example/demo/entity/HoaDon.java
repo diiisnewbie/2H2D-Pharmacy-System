@@ -36,19 +36,19 @@ public class HoaDon {
     private LocalDate ngayTao;
 
     @Column(name = "tongGiaTriHoaDon")
-    private double tongGiaTriHoaDon;
+    private float tongGiaTriHoaDon;
 
     @Column(name = "tienDaGiam")
     private float tienDaGiam;
 
     @Column(name = "tongTienThanhToan")
-    private double tongTienThanhToan;
+    private float tongTienThanhToan;
 
     @Column(name="tongTienKhachTra")
-    private double tongTienKhachTra;
+    private float tongTienKhachTra;
 
     @Column(name = "phuongThucThanhToan")
-    private String phuongThucThanhToan;
+    private PhuongThucThanhToan phuongThucThanhToan;
 
     @Column(name = "tongTienTraLai")
     private float tongTienTraLai;

@@ -57,7 +57,7 @@ public class SanPham {
     private String nhaCungCap;
 
     @Column(name = "giaSanPham")
-    private double giaSanPham;
+    private float giaSanPham;
 
     @Column(name = "soLuong")
     private int soLuong;
