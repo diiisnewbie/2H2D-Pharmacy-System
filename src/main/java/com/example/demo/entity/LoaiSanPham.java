@@ -1,4 +1,7 @@
 package com.example.demo.entity;
+import java.time.LocalDate;
+import java.util.List;
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,23 +15,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "loaithuoc")
-public class LoaiThuoc {
+@Table(name = "LoaiSanPham")
+public class LoaiSanPham {
     @Id
-    @Column(name = "maLoaiThuoc")
-    private String maLoaiThuoc;
+    @Column(name = "maLoaiSanPham",columnDefinition = "NVARCHAR(50)",nullable = false)
+    private String maLoaiSanPham;
 
-    @Column(name = "tenLoaiThuoc")
-    private String tenLoaiThuoc;
+    @Column(name = "tenLoaiSanPham",columnDefinition = "NVARCHAR(50)",nullable = false)
+    private String tenLoaiSanPham;
 
-    @OneToMany(mappedBy = "loaiThuoc",cascade = CascadeType.ALL)
-    private List<Thuoc> dsThuoc;
+    @OneToMany(mappedBy = "loaiSanPham",cascade = CascadeType.ALL)
+    private List<SanPham> dsSanPham;
 }

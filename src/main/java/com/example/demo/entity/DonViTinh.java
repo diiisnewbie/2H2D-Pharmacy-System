@@ -1,5 +1,5 @@
 package com.example.demo.entity;
-
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -7,8 +7,6 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -23,25 +21,15 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "donvitinh")
+@Table(name = "DonViTinh")
 public class DonViTinh {
     @Id
-    @Column(name = "maDonViTinh")
+    @Column(name = "maDonViTinh",columnDefinition = "NVARCHAR(50)",nullable = false)
     private String maDonViTinh;
 
-    @Column(name = "ten")
-    private String ten;
+    @Column(name = "tenDonViTinh", columnDefinition = "NVARCHAR(50)",nullable = false)
+    private String tenDonViTinh;
 
-    @OneToMany(mappedBy = "donViTinh",cascade = CascadeType.ALL)
-    private List<Thuoc_DonViTinh> dsThuoc_DonViTinh;
-
-    @OneToMany(mappedBy = "donViTinh", cascade = CascadeType.ALL)
-    private List<KhoThuoc> dsKhoThuoc;
-
-    @OneToMany(mappedBy = "donViTinhCha", cascade = CascadeType.ALL)
-    private List<DonViTinh> dsDonViTinhCha;
-
-    @ManyToOne
-    @JoinColumn(name = "maDonViTinhCha")
-    private DonViTinh donViTinhCha;
+    @OneToMany(mappedBy = "donViTinh",cascade=CascadeType.ALL)
+    private List<SanPham> dsSanPham;
 }

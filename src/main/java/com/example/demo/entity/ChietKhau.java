@@ -21,28 +21,28 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "chietkhau")
+@Table(name = "ChietKhau")
 public class ChietKhau {
     @Id
-    @Column(name = "maGiamGia")
-    private String maGiamGia;
+    @Column(name = "maChietKhau", columnDefinition = "NVARCHAR(50)",nullable = false)
+    private String maChietKhau;
 
-    @Column(name = "soLuong")
+    @Column(name = "soLuong",nullable = false)
     private int soLuong;
 
-    @Column(name = "giaTriChietKhau")
-    private float giaTriChietKhau;
+    @Column(name = "giaTriChietKhau",nullable = false)
+    private double giaTriChietKhau;
 
-    @Column(name = "ngayBatDauApDung")
+    @Column(name = "ngayBatDauApDung",nullable = false)
     private LocalDate ngayBatDauApDung;
 
-    @Column(name = "ngayKetThucApDung")
+    @Column(name = "ngayKetThucApDung",nullable = false)
     private LocalDate ngayKetThucApDung;
 
-    @Column(name = "trangThaiChietKhau")
+    @Column(name = "trangThaiChietKhau",nullable = false)
     private boolean trangThaiChietKhau;
 
-    @Column(name = "moTa")
+    @Column(name = "moTa", columnDefinition = "NVARCHAR(255)",nullable = true)
     private String moTa;
 
     @OneToMany(mappedBy = "chietKhau",cascade = CascadeType.ALL)

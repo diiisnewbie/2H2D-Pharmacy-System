@@ -17,31 +17,23 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "chitiethoadon")
+@Table(name = "ChiTietHoaDon")
 public class ChiTietHoaDon {
     @Id
-    @Column(name = "maChiTietHoaDon")
-    private String maChiTietHoaDon;
+    @ManyToOne
+    @JoinColumn(name = "maHoaDon",columnDefinition = "NVARCHAR(50)",nullable = false)
+    private HoaDon maHoaDon;
 
-    @Column(name = "soLuong")
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "maSanPham",columnDefinition = "NVARCHAR(50)",nullable = false)
+    private SanPham maSanPham;
+
+    @Column(name = "soLuong",nullable = false)
     private int soLuong;
 
-    @Column(name = "gia")
-    private float gia;
+    @Column(name = "tongTien",nullable = false)
+    private double tongTien;
 
-    @Column(name = "tongTien")
-    private float tongTien;
-
-    @ManyToOne
-    @JoinColumn(name = "maSanPham")
-    private SanPham sanPham;
-
-    @ManyToOne
-    @JoinColumn(name = "maHoaDon")
-    private HoaDon hoaDon;
-
-    @ManyToOne
-    @JoinColumn(name = "maThuoc")
-    private Thuoc thuoc;
 
 }

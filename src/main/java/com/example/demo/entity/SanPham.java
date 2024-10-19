@@ -23,52 +23,67 @@ import java.time.*;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "sanpham")
+@Table(name = "SanPham")
 public class SanPham {
     @Id
-    @Column(name = "maSanPham")
+    @Column(name = "maSanPham",columnDefinition = "NVARCHAR(50)")
     private String maSanPham;
 
-    @Column(name = "tenSanPham")
+    @Column(name = "tenSanPham",columnDefinition = "NVARCHAR(255)")
     private String tenSanPham;
 
-    @Column(name = "quyCachDongGoi")
+    @Column(name = "quyCachDongGoi",columnDefinition = "NVARCHAR(50)",nullable = true)
     private String quyCachDongGoi;
 
-    @Column(name = "nhaSanXuat")
+    @Column(name = "thanhPhan",columnDefinition = "NVARCHAR(255)",nullable = true)
+    private String thanhPhan;
+
+    @Column(name = "dangBaoChe",columnDefinition = "NVARCHAR(50)",nullable = true)
+    private String dangBaoChe;
+
+    @Column(name = "nhaSanXuat",columnDefinition = "NVARCHAR(50)")
     private String nhaSanXuat;
 
-    @Column(name = "quocGiaSanXuat")
+    @Column(name = "quocGiaSanXuat",columnDefinition = "NVARCHAR(50)")
     private String quocGiaSanXuat;
 
-    @Column(name = "doiTuongSuDung")
+    @Column(name = "doiTuongSuDung",columnDefinition = "NVARCHAR(255)",nullable = false)
     private String doiTuongSuDung;
 
-    @Column(name = "hanSuDung")
-    private LocalDate hanSuDung;
-
-    @Column(name = "ngaySanXuat")
-    private LocalDate ngaySanXuat;
-
-    @Column(name = "moTaSanPham")
+    @Column(name = "moTaSanPham",columnDefinition = "NVARCHAR(255)",nullable = true)
     private String moTaSanPham;
 
-    @Column(name = "nhaCungCap")
-    private String nhaCungCap;
+    @Column(name = "donGia",nullable = false)
+    private double donGia;
 
-    @Column(name = "giaSanPham")
-    private float giaSanPham;
-
-    @Column(name = "soLuong")
+    @Column(name = "soLuong",nullable = false)
     private int soLuong;
 
-    @OneToMany(mappedBy = "sanPham",cascade = CascadeType.ALL)
+    @Column(name = "chiDinhSuDung",nullable = false)
+    private ChiDinhSuDung chiDinhSuDung;
+
+    @Column(name = "hamLuong",columnDefinition = "NVARCHAR(50)",nullable = true)
+    private String hamLuong;
+
+    @Column(name = "duongDung",columnDefinition = "NVARCHAR(20)",nullable = true)
+    private String duongDung;
+
+    @OneToMany(mappedBy = "maSanPham",cascade = CascadeType.ALL)
     private List<ChiTietHoaDon> dsChiTietHoaDon;
 
-    @ManyToOne
-    @JoinColumn(name = "maViTri")
-    private ViTriSanPham viTriSanPham;
+    @OneToMany(mappedBy = "maSanPham",cascade = CascadeType.ALL)
+    private List<ChiTietPhieuNhap> dsChiTietPhieuNhap;
 
-    @OneToOne(mappedBy = "sanPham",cascade = CascadeType.ALL)
-    private GiaBan giaBan;
+    @ManyToOne
+    @JoinColumn(name = "maDonViTinh",nullable = false)
+    private DonViTinh donViTinh;
+
+    @ManyToOne
+    @JoinColumn(name = "maLoaiSanPham",nullable = false)
+    private LoaiSanPham loaiSanPham;
+
+    @ManyToOne
+    @JoinColumn(name = "maNhomSanPham",nullable = false)
+    private NhomSanPham nhomSanPham;
+    
 }

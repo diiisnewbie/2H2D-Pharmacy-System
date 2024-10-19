@@ -23,44 +23,50 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "hoadon")
+@Table(name = "HoaDon")
 public class HoaDon {
     @Id
-    @Column(name = "maHoaDon")
+    @Column(name = "maHoaDon",columnDefinition = "NVARCHAR(50)",nullable = false)
     private String maHoaDon;
 
-    @Column(name = "trangThaiHoaDon")
+    @Column(name = "trangThaiHoaDon",nullable = false)
     private boolean trangThaiHoaDon;
 
-    @Column(name = "ngayTao")
+    @Column(name = "ngayTao",nullable = false)
     private LocalDate ngayTao;
 
-    @Column(name = "tongGiaTriHoaDon")
-    private float tongGiaTriHoaDon;
+    @Column(name = "tongGiaTriHoaDon",nullable = false)
+    private double tongGiaTriHoaDon;
 
-    @Column(name = "tienDaGiam")
-    private float tienDaGiam;
+    @Column(name = "tienDaGiam",nullable = false)
+    private double tienDaGiam;
 
-    @Column(name = "tongTienThanhToan")
-    private float tongTienThanhToan;
+    @Column(name = "tongTienThanhToan",nullable = false)
+    private double tongTienThanhToan;
 
-    @Column(name="tongTienKhachTra")
-    private float tongTienKhachTra;
+    @Column(name="tongTienKhachTra",nullable = false)
+    private double tongTienKhachTra;
+
+    @Column(name = "tongTienTraLai",nullable = false)
+    private double tongTienTraLai;
 
     @Column(name = "phuongThucThanhToan")
     private PhuongThucThanhToan phuongThucThanhToan;
 
-    @Column(name = "tongTienTraLai")
-    private float tongTienTraLai;
+    private final double VAT = 0.08;
     
     @ManyToOne
     @JoinColumn(name = "maNhanVien")
     private NhanVien nhanVien;
 
-    @OneToMany(mappedBy = "hoaDon",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "maHoaDon",cascade = CascadeType.ALL)
     private List<ChiTietHoaDon>  dsChiTietHoaDon;
 
     @ManyToOne
     @JoinColumn(name = "maChietKhau")
     private ChietKhau chietKhau;
+
+    @ManyToOne
+    @JoinColumn(name = "maKhachHang")
+    private KhachHang khachHang;
 }
