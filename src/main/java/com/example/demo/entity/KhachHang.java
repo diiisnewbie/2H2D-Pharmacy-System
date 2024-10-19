@@ -33,6 +33,9 @@ public class KhachHang {
     @Column(name = "soDienThoai",columnDefinition = "NVARCHAR(15)",nullable = false)
     private String soDienThoai;
 
+    @Column(name = "email",columnDefinition = "NVARCHAR(255)",nullable = false)
+    private String email;
+
     @Column(name = "ngaySinh",nullable = false)
     private LocalDate ngaySinh;
 
